@@ -37,6 +37,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
     private byte lastAngleContent, angleToBeSent;
     private boolean lastBoostContent;
     private boolean waitingForPong;
+    private double boostModif;
 
     static {
         HEADER.put("Origin", "http://slither.io");
@@ -538,6 +539,15 @@ final class MySlitherWebSocketClient extends WebSocketClient {
         view.setMap(map);
     }
 
+    /**
+     * This method sets the modifier for the boosting speed of the given snake depending
+     * on the speed selected in MySlitherJFrame.setSnakeSpeed()
+     * @param modif double depicting the speed of the snake while boosting
+     */
+    public void setBoostModif(double modif){
+        this.boostModif = modif;
+    }
+
     private void processAddRemoveSnake(int[] data) {
         if (data.length >= 31) {
             int id = (data[3] << 8) | (data[4]);
@@ -571,7 +581,6 @@ final class MySlitherWebSocketClient extends WebSocketClient {
                 body.addFirst(new SnakeBodyPart(currentBodyPartX, currentBodyPartY));
             }
 
-            double boostModif = 2.0;
             model.addSnake(id, name.toString(), x, y, wang, ang, sp, fam, body, boostModif);
         } else if (data.length == 6) {
             int id = (data[3] << 8) | (data[4]);

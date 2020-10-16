@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.http.WebSocket;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -466,16 +467,19 @@ final class MySlitherJFrame extends JFrame {
         switch (gameSpeed) {
             case 0:
                 snakeSpeed = 5;
+                client.setBoostModif(3.0);
                 break;
             case 1:
                 snakeSpeed = 3;
+                client.setBoostModif(6.0);
                 break;
             case 2:
                 snakeSpeed = 1.5;
+                client.setBoostModif(9.0);
                 break;
         }
     }
-    
+
     public int getGameSpeed() {
         return gameSpeed;
     }
