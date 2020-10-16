@@ -581,6 +581,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
     }
 
     private void processAddFood(int[] data, boolean allowMultipleEntities, boolean fastSpawn) {
+        int speed = view.getGameSpeed();
         if ((!allowMultipleEntities && data.length != 9) || (allowMultipleEntities && (data.length < 9 || ((data.length - 9) % 6 != 0)))) {
             view.log("add food wrong length!");
             return;
@@ -589,7 +590,7 @@ final class MySlitherWebSocketClient extends WebSocketClient {
             int x = (data[i - 4] << 8) | data[i - 3];
             int z = (data[i - 2] << 8) | data[i - 1];
             double radius = data[i] / 5.0;
-            model.addFood(x, z, radius, fastSpawn); // TODO: now always...
+            model.addFood(x, z, radius, fastSpawn, speed); // TODO: now always...
         }
     }
 

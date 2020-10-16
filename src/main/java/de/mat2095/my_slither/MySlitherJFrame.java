@@ -104,6 +104,8 @@ final class MySlitherJFrame extends JFrame {
     private URI[] serverList;
     private MySlitherWebSocketClient client;
     private final Player player;
+    private int gameSpeed;
+    private double snakeSpeed;
     MySlitherModel model;
     final Object modelLock = new Object();
 
@@ -446,5 +448,39 @@ final class MySlitherJFrame extends JFrame {
             this.buttonEnabled = buttonEnabled;
             this.allowModifyData = allowModifyData;
         }
+    }
+
+    /**
+     * Allows the user to input whether they want to play a "Slow", "Medium" or "Fast" paced game
+     */
+    public void setGameSpeed() {
+        String[] buttons = {"Slow", "Medium", "Fast"};
+        gameSpeed = JOptionPane.showOptionDialog(this, "Select Game Speed", "Game Speed",
+            JOptionPane.WARNING_MESSAGE, 0, null, buttons, buttons[2]);
+    }
+
+    /**
+     * Calculates snake movement speed based off of game speed
+     */
+    public void setSnakeSpeed() {
+        switch (gameSpeed) {
+            case 0:
+                snakeSpeed = 5;
+                break;
+            case 1:
+                snakeSpeed = 3;
+                break;
+            case 2:
+                snakeSpeed = 1.5;
+                break;
+        }
+    }
+    
+    public int getGameSpeed() {
+        return gameSpeed;
+    }
+
+    public double getSnakeSpeed() {
+        return snakeSpeed;
     }
 }

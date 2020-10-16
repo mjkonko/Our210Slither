@@ -42,6 +42,9 @@ class MySlitherModel {
         this.mscps = mscps;
         this.view = view;
 
+        view.setGameSpeed(); // Sets the size of food to make it easier or more difficult to collect
+        view.setSnakeSpeed();
+
         sectors = new boolean[gameRadius * 2 / sectorSize][gameRadius * 2 / sectorSize];
 
         fmlts = new double[mscps + 1];
@@ -71,7 +74,7 @@ class MySlitherModel {
             snakes.values().forEach(cSnake -> {
 
                 double snakeDeltaAngle = mamu1 * deltaTime * cSnake.getScang() * cSnake.getSpang();
-                double snakeDistance = cSnake.sp * deltaTime / 4.0;
+                double snakeDistance = cSnake.sp * deltaTime / view.getSnakeSpeed();
                 if (snakeDistance > 42) {
                     snakeDistance = 42;
                 }
@@ -207,9 +210,18 @@ class MySlitherModel {
         }
     }
 
-    void addFood(int x, int y, double size, boolean fastSpawn) {
+    void addFood(int x, int y, double size, boolean fastSpawn, int gameSpeed) {
         synchronized (view.modelLock) {
+            switch (gameSpeed) {
+                case 1:
+                    size = size * 2;
+                    break;
+                case 2:
+                    size = size * 3;
+                    break;
+            }
             foods.put(y * gameRadius * 3 + x, new Food(x, y, size, fastSpawn));
+
         }
     }
 
