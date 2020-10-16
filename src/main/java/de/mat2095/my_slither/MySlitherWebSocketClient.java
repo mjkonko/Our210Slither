@@ -571,7 +571,8 @@ final class MySlitherWebSocketClient extends WebSocketClient {
                 body.addFirst(new SnakeBodyPart(currentBodyPartX, currentBodyPartY));
             }
 
-            model.addSnake(id, name.toString(), x, y, wang, ang, sp, fam, body);
+            double boostModif = 2.0;
+            model.addSnake(id, name.toString(), x, y, wang, ang, sp, fam, body, boostModif);
         } else if (data.length == 6) {
             int id = (data[3] << 8) | (data[4]);
             model.removeSnake(id);

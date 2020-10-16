@@ -11,11 +11,12 @@ class Snake {
     int dir;
     double wang, ang;
     double sp, tsp;
+    double boostModif; //modifier for the boosting function
     private double fam;
     final Deque<SnakeBodyPart> body;
     private final MySlitherModel model;
 
-    Snake(int id, String name, double x, double y, double wang, double ang, double sp, double fam, Deque<SnakeBodyPart> body, MySlitherModel model) {
+    Snake(int id, String name, double x, double y, double wang, double ang, double sp, double fam, Deque<SnakeBodyPart> body, MySlitherModel model, double boostModif){
         this.id = id;
         this.name = name;
         this.x = x;
@@ -28,6 +29,7 @@ class Snake {
         this.fam = fam;
         this.body = body;
         this.model = model;
+        this.boostModif = boostModif;
     }
 
     private double getSc() {
@@ -43,7 +45,7 @@ class Snake {
     }
 
     private double getFsp() {
-        return model.nsp1 + model.nsp2 * getSc();
+        return model.nsp1 + model.nsp2 * getSc() * boostModif;
     }
 
     boolean isBoosting() {
