@@ -48,7 +48,7 @@ final class MySlitherCanvas extends JPanel {
     final MouseInput mouseInput = new MouseInput();
 
     class MouseInput extends Player {
-
+        
         Double wang;
         boolean boost;
 
@@ -260,14 +260,34 @@ final class MySlitherCanvas extends JPanel {
             g.setStroke(oldStroke);
 
             g.setTransform(oldTransform);
-
+            
             g.setColor(MAP_COLOR);
-            g.drawOval(w - 80, h - 80, 79, 79);
+
+            view.setMapLocation();
+
+            //map white boarder 
+            //g.drawOval(100, 100, 300, 300);
             boolean[] currentMap = map; // TODO: save map in model, set to null on reconnect
             if (currentMap != null) {
                 for (int i = 0; i < currentMap.length; i++) {
                     if (currentMap[i]) {
-                        g.fillRect((i % 80) + w - 80, (i / 80) + h - 80, 1, 1);
+                        //set map location depending on what corners  you selected
+                        if(view.getMapNS() == "S" & view.getMapEW() == "E")
+                        {
+                            g.fillRect((i % 80) + w - view.getMapX(), (i / 80) + h - view.getMapY(), 1, 1);
+                        }
+                        if(view.getMapNS() == "N" & view.getMapEW() == "E")
+                        {
+                            g.fillRect((i % 80) + w - view.getMapX(), (i / 80) + view.getMapY(), 1, 1);
+                        }
+                        if(view.getMapNS() == "S" & view.getMapEW() == "W")
+                        {
+                            g.fillRect((i % 80) + view.getMapX(), (i / 80) + h - view.getMapY(), 1, 1);
+                        }
+                        if(view.getMapNS() == "N" & view.getMapEW() == "W")
+                        {
+                            g.fillRect((i % 80) + view.getMapX(), (i / 80) + view.getMapY(), 1, 1);
+                        }                        
                     }
                 }
             }

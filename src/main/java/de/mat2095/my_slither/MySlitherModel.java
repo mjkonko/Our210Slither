@@ -45,6 +45,8 @@ class MySlitherModel {
         view.setGameSpeed(); // Sets the size of food to make it easier or more difficult to collect
         view.setSnakeSpeed();
 
+        view.setMapValue(); // Sets the location of the maps
+
         sectors = new boolean[gameRadius * 2 / sectorSize][gameRadius * 2 / sectorSize];
 
         fmlts = new double[mscps + 1];
