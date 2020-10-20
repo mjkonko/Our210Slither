@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Our210Slither</name>
 	<comment>Project Our210Slither created by Buildship.</comment>
+=======
+	<name>Our210Slither-master</name>
+	<comment>Project Our210Slither-master created by Buildship.</comment>
+>>>>>>> e960fcf8009d2c4c1c7eef4cb74a055b4a401ffc
 	<projects>
 	</projects>
 	<buildSpec>
@@ -22,7 +27,11 @@
 	</natures>
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
 			<id>1603117629367</id>
+=======
+			<id>1603029450336</id>
+>>>>>>> e960fcf8009d2c4c1c7eef4cb74a055b4a401ffc
 			<name></name>
 			<type>30</type>
 			<matcher>

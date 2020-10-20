@@ -5,7 +5,11 @@ connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
 connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
+<<<<<<< HEAD
 java.home=C\:/Users/Ryan Hyland/AppData/Local/Programs/AdoptOpenJDK
+=======
+java.home=/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home
+>>>>>>> e960fcf8009d2c4c1c7eef4cb74a055b4a401ffc
 jvm.arguments=
 offline.mode=false
 override.workspace.settings=true

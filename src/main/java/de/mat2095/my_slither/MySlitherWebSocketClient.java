@@ -597,10 +597,21 @@ final class MySlitherWebSocketClient extends WebSocketClient {
             return;
         }
         for (int i = 8; i < data.length; i += 6) {
+<<<<<<< HEAD
+            //spawns more often for high speed
+            for (int increasdSpawnRateIndex = 0; increasdSpawnRateIndex < (speed+1); increasdSpawnRateIndex++)
+            {
+                int x = (data[i - 4] << 8) | data[i - 3];
+                int z = (data[i - 2] << 8) | data[i - 1];
+                double radius = data[i] / 5.0;
+                model.addFood(x, z, radius, fastSpawn, speed); // TODO: now always...
+            }
+=======
             int x = (data[i - 4] << 8) | data[i - 3];
             int z = (data[i - 2] << 8) | data[i - 1];
             double radius = data[i] / 5.0;
             model.addFood(x, z, radius, fastSpawn, speed); // TODO: now always...
+>>>>>>> 881fa864f2dded8e1fc8747d949ec0f941753c49
         }
     }
 
