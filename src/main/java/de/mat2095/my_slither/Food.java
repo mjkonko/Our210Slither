@@ -5,7 +5,11 @@ class Food {
 
     final int x, y;
     private final double size;
+<<<<<<< HEAD
     private final double rsp;     
+=======
+    private final double rsp;
+>>>>>>> 881fa864f2dded8e1fc8747d949ec0f941753c49
     private final long spawnTime;
 
     Food(int x, int y, double size, boolean fastSpawn) {
