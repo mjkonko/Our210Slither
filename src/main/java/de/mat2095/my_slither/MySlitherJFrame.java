@@ -105,6 +105,7 @@ final class MySlitherJFrame extends JFrame {
     private URI[] serverList;
     private MySlitherWebSocketClient client;
     private final Player player;
+    private static String colour = "0x960019";
     private int gameSpeed;
     private double snakeSpeed;
     MySlitherModel model;
