@@ -2,6 +2,7 @@ package de.mat2095.my_slither;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URI;
@@ -19,71 +20,17 @@ import javax.swing.table.DefaultTableCellRenderer;
 final class MySlitherJFrame extends JFrame {
 
     private static final String[] SNAKES = {
-        "00 - purple",
-        "01 - blue",
-        "02 - cyan",
-        "03 - green",
-        "04 - yellow",
-        "05 - orange",
-        "06 - salmon",
-        "07 - red",
-        "08 - violet",
-        "09 - flag: USA",
-        "10 - flag: Russia",
-        "11 - flag: Germany",
-        "12 - flag: Italy",
-        "13 - flag: France",
-        "14 - white/red",
-        "15 - rainbow",
-        "16 - blue/yellow",
-        "17 - white/blue",
-        "18 - red/white",
-        "19 - white",
-        "20 - green/purple",
-        "21 - flag: Brazil",
-        "22 - flag: Ireland",
-        "23 - flag: Romania",
-        "24 - cyan/yellow +extra",
-        "25 - purple/orange +extra",
-        "26 - grey/brown",
-        "27 - green with eye",
-        "28 - yellow/green/red",
-        "29 - black/yellow",
-        "30 - stars/EU",
-        "31 - stars",
-        "32 - EU",
-        "33 - yellow/black",
-        "34 - colorful",
-        "35 - red/white/pink",
-        "36 - blue/white/light-blue",
-        "37 - Kwebbelkop",
-        "38 - yellow",
-        "39 - PewDiePie",
-        "40 - green happy",
-        "41 - red with eyes",
-        "42 - Google Play",
-        "43 - UK",
-        "44 - Ghost",
-        "45 - Canada",
-        "46 - Swiss",
-        "47 - Moldova",
-        "48 - Vietnam",
-        "49 - Argentina",
-        "50 - Colombia",
-        "51 - Thailand",
-        "52 - red/yellow",
-        "53 - glowy-blue",
-        "54 - glowy-red",
-        "55 - glowy-yellow",
-        "56 - glowy-orange",
-        "57 - glowy-purple",
-        "58 - glowy-green",
-        "59 - yellow-M",
-        "60 - detailed UK",
-        "61 - glowy-colorful",
-        "62 - purple spiral",
-        "63 - red/black",
-        "64 - blue/black"
+        "Red",
+        "Salmon",
+        "Orange",
+        "Yellow",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Purple",
+        "Violet",
+        "White",
+        "Black",
     };
 
     // TODO: skins, prey-size, snake-length/width, bot-layer, that-other-thing(?), show ping
@@ -144,6 +91,55 @@ final class MySlitherJFrame extends JFrame {
 
         snake = new JComboBox<>(SNAKES);
         snake.setMaximumRowCount(snake.getItemCount());
+        // Action listener to check for a change in the selected item in the JComboBox
+        // and pass the string value to the variable Colour
+        ActionListener colActionListener = new ActionListener() { // add actionlistner to listen for change
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String sCol = (String) snake.getSelectedItem(); // get the selected item
+
+                switch (sCol) { // check for a match
+                    case "Red":
+                        setColour("0x960019");
+                        break;
+                    case "Salmon":
+                        setColour("0xfa8072");
+                        break;
+                    case "Orange":
+                        setColour("0xff781f");
+                        break;
+                    case "Yellow":
+                        setColour("0xffe338");
+                        break;
+                    case "Green":
+                        setColour("0x0e6b0e");
+                        break;
+                    case "Cyan":
+                        setColour("0x00ffff");
+                        break;
+                    case "Blue":
+                        setColour("0x1167b1");
+                        break;
+                    case "Purple":
+                        setColour("0x3c1361");
+                        break;
+                    case "Violet":
+                        setColour("0x8f00ff");
+                        break;
+                    case "White":
+                        setColour("0xffffff");
+                        break;
+                    case "Black":
+                        setColour("0x0a0a0a");
+                        break;
+                    default:
+                        setColour("0x960019");
+                        break;
+                }
+            }
+        };
+        snake.addActionListener(colActionListener);
 
         useRandomServer = new JCheckBox("use random server", true);
         useRandomServer.addActionListener(a -> {
@@ -548,6 +544,10 @@ final class MySlitherJFrame extends JFrame {
     public double getSnakeSpeed() {
         return snakeSpeed;
     }
+    
+    public void setColour(String colour) {
+		MySlitherJFrame.colour = colour;
+	}
     
     public static String getColour() {
 		return colour;
