@@ -17,6 +17,12 @@ import javax.swing.*;
 
 
 final class MySlitherCanvas extends JPanel {
+    
+    public static String c = MySlitherJFrame.getColour();
+    public static Color color =  Color.decode(c);
+    public static int red = color.getRed();
+    public static int green = color.getGreen();
+    public static int blue = color.getBlue();
 
     private static final Color BACKGROUND_COLOR = new Color(0x2B2B2B);
     private static final Color FOREGROUND_COLOR = new Color(0xA9B7C6);
@@ -31,7 +37,7 @@ final class MySlitherCanvas extends JPanel {
     private static final Color[] SNAKE_HALO_COLORS = new Color[]{new Color(0x60287BDE, true), new Color(0x00287BDE, true)};
     private static final Color[] OWN_SNAKE_HALO_COLORS = new Color[]{new Color(0x6039AFFF, true), new Color(0x0039AFFF, true)};
     private static final Color SNAKE_BODY_COLOR = new Color(0x6A8759);
-    private static final Color OWN_SNAKE_BODY_COLOR = new Color(0xA5C261);
+    private static final Color OWN_SNAKE_BODY_COLOR = new Color(red, green, blue);
     private static final Color MAP_COLOR = new Color(0xA0A9B7C6, true);
     private static final Color MAP_POSITION_COLOR = new Color(0xE09E2927, true);
     private static final Color NAME_SHADOW_COLOR = new Color(0xC02B2B2B, true);
