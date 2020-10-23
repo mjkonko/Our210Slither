@@ -548,4 +548,8 @@ final class MySlitherJFrame extends JFrame {
     public double getSnakeSpeed() {
         return snakeSpeed;
     }
+    
+    public static String getColour() {
+		return colour;
+	}
 }
